@@ -1,0 +1,97 @@
+"<eExact
+ xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespaceSchemaLocation=\"eExact-XML.xsd\">
+ <Invoices>
+ <Invoice type=\"8020\">
+ <Journal code=\"80\"></Journal>
+ <Description>Januari 2024</Description>
+ <YourRef>52617</YourRef>
+ <OrderedBy code=\"2541607618\">
+ </OrderedBy><InvoiceTo code=\"2541607618\">
+ </InvoiceTo><InvoiceLine>
+ <Description>New 1</Description>
+ <Item code=\"001\"></Item>
+ <Quantity>43</Quantity>
+ <Note>Mollitia voluptates beatae.</Note>
+ <StartDate>2024-01-05T00:00:00Z</StartDate>
+ <NetPrice><VAT code=\"0 \"></VAT>
+ <Value>1</Value></NetPrice>
+ </InvoiceLine><OrderDate>2024-01-31T00:00:00Z</OrderDate
+ </Invoice><Invoice type=\"8020\"><Journal code=\"80\"></Journal>
+ <Description>Januari 2024</Description><YourRef>52617</YourRef>
+ <OrderedBy code=\"2541607618\"></OrderedBy>
+ <InvoiceTo code=\"2541607618\"></InvoiceTo>
+ <InvoiceLine><Description>New 2</Description>
+ <Item code=\"001\"></Item><Quantity>43</Quantity>
+ <Note>Mollitia voluptates beatae.</Note>
+ <StartDate>2024-01-05T00:00:00Z</StartDate>
+ <NetPrice><VAT code=\"0 \"></VAT><Value>1</Value>
+ </NetPrice></InvoiceLine><OrderDate>2024-01-31T00:00:00Z</OrderDate></Invoice><Invoice type=\"8020\"><Journal code=\"80\"></Journal><Description>Januari 2024</Description><YourRef>52617</YourRef><OrderedBy code=\"2541607618\"></OrderedBy><InvoiceTo code=\"2541607618\"></InvoiceTo><InvoiceLine><Description>New 3</Description><Item code=\"001\"></Item><Quantity>43</Quantity><Note>Mollitia voluptates beatae.</Note><StartDate>2024-01-05T00:00:00Z</StartDate><NetPrice><VAT code=\"0 \"></VAT><Value>1</Value></NetPrice></InvoiceLine><OrderDate>2024-01-31T00:00:00Z</OrderDate></Invoice></Invoices></eExact>"
+
+
+
+ swagger: '2.0'
+info:
+  title: xmlContentUpload
+  description: ''
+  version: '1.0'
+host: start.exactonline.nl
+basePath: /
+schemes:
+  - https
+consumes: []
+produces: []
+paths:
+  /docs/XMLUpload.aspx:
+    post:
+      responses:
+        default:
+          description: default
+          schema: {}
+      summary: this is for start.exactonline
+      description: this is for start.exactonline
+      operationId: UploadXmlContent
+      parameters:
+        - name: Topic
+          in: query
+          required: true
+          type: string
+          default: Invoices
+        - name: _Division_
+          in: query
+          required: true
+          type: integer
+          default: 3683996
+        - name: Content-Type
+          in: header
+          required: true
+          type: string
+          default: a
+          description: Content-Type
+          x-ms-summary: ''
+        - name: Accept-Charset
+          in: header
+          required: true
+          type: string
+          default: application/json
+          description: Accept-Charset
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties: {}
+definitions: {}
+parameters: {}
+responses: {}
+securityDefinitions:
+  oauth2-auth:
+    type: oauth2
+    flow: accessCode
+    authorizationUrl: https://start.exactonline.nl/api/oauth2/auth
+    tokenUrl: https://start.exactonline.nl/api/oauth2/token
+    scopes:
+      read:accounts read:contacts create:invoices: read:accounts read:contacts create:invoices
+security:
+  - oauth2-auth:
+      - read:accounts read:contacts create:invoices
+tags: []
